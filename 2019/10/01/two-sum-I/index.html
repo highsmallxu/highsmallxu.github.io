@@ -148,12 +148,11 @@
             
             <div class="post-full-content">
                 <article id="photoswipe" class="markdown-body">
-                    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">TwoSum problem</a> is one of the most classic problems on Leetcode. You can easily find tons of articles online explaining this problem. But in this article (and the next article), I will focus on not only solving this single problem, but also it’s “family members” surrounding it. </p>
-<p>The following graph is the “family tree” of TwoSum problem. They are generated based on the <strong>Similar Questions</strong> relation on Leetcode. In this article, I’m going to explain the problems which have a direct relation with TwoSum problem.  The rest will be explained in the next article.</p>
-<!-- ![TwoSum](/images/two_sum_family.png) -->
-<img style="float: right;" width="400" height="400" class="post-img b-lazy" data-img="/images/two_sum_family.png" data-index="0" data-src="/images/two_sum_family.png">
+                    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">TwoSum problem</a> is one of the most classic problems on Leetcode. You can easily find articles online explaining this problem. But in this article (and the next article), I will focus on not only solving this single problem, but also it’s “family members” surrounding it. </p>
+<p>The following graph is the “family tree” of TwoSum problem. They are generated based on the <strong>Similar Questions</strong> relation on Leetcode. In this article, I’m going to explain the problems which have a close relation to TwoSum problem.  The rest will be explained in the next article.</p>
+<img style="float: right;" width="400" height="400" class="post-img b-lazy" data-img="/images/two_sum_family_watermark.png" data-index="0" data-src="/images/two_sum_family_watermark.png">
 
-<p>Leetcode problems mentioned in this article:</p>
+<p>Leetcode problems that will be discussed in this article:</p>
 <ul>
 <li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum (Easy)</a></li>
 <li><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">15. 3Sum (Medium)</a></li>
@@ -170,7 +169,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].</span><br></pre></td></tr></table></figure>
 
 <p><strong>Solution I - Brute force</strong></p>
-<p>The first solution in my mind is brute force. We need two levels of loop. In the first level, index <code>i</code> starts from 0 to the end of the list. In the second level, index <code>j</code> starts from <code>i+1</code> to the end of the list. As each input would have exactly one solution, whenever <code>nums[i] + nums[j] == target</code>, we can return <code>i</code> and <code>j</code>. The time complexity would be O(n^2). </p>
+<p>The first solution is brute force. We need two levels of loop. In the first level, index <code>i</code> starts from 0 to the end of the list. In the second level, index <code>j</code> starts from <code>i+1</code> to the end of the list. As each input would have exactly one solution, whenever <code>nums[i] + nums[j] == target</code>, we can return <code>i</code> and <code>j</code>. The time complexity would be O(n^2). </p>
 <p>Here is the code:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># brute force</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums) - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target:</span><br><span class="line">                <span class="keyword">return</span> [i, j]</span><br></pre></td></tr></table></figure>
 
@@ -220,8 +219,7 @@
 <p>It’s an easy variant of TwoSum. We need to find numbers that sum up to a value less than K. Here is the coding using two-pointers solution. </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSumLessThanK</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = len(A) - <span class="number">1</span></span><br><span class="line">    A = sorted(A)</span><br><span class="line">    res = -float(<span class="string">"inf"</span>)</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        sum = A[l] + A[r]</span><br><span class="line">        <span class="keyword">if</span> sum == K <span class="keyword">or</span> sum &gt; K:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res = max(res, sum)</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">if</span> res!=-float(<span class="string">"inf"</span>) <span class="keyword">else</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>I like discovering relations among problems. Solving a single problem is only a temporary thing.<br>It is more important to understand the core of a “simple” problem, try to solve it in different ways and then extend the solutions to other related problems. In this way, you can solve problems on Leetcode more efficiently and remember the solutions more easily as well. </p>
-<p>In the next article, I will explain the rest problems. Stay tuned! </p>
+<p><strong>If you like this article, please share it with your peers! Stay tuned!</strong></p>
 
                 </article>
                 <ul class="tags-postTags">
@@ -259,6 +257,10 @@
     
     <nav id="gobottom" class="pagination">
         
+        <a class="prev-post" title="TwoSum problem and it's big family (part II)" href="/2019/10/05/two-sum-ii/">
+            ← TwoSum problem and it's big family (part II)
+        </a>
+        
         <span class="prev-next-post">·</span>
         
     </nav>
@@ -284,7 +286,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum"><span class="toc-text">TwoSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreeSum-amp-FourSum"><span class="toc-text">ThreeSum &amp; FourSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum-II-amp-TwoSum-III"><span class="toc-text">TwoSum II &amp; TwoSum III</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subarray-Sum-Equals-K-amp-TwoSum-Less-Than-K"><span class="toc-text">Subarray Sum Equals K &amp; TwoSum Less Than K</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum"><span class="toc-text">TwoSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreeSum-amp-FourSum"><span class="toc-text">ThreeSum &amp; FourSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum-II-amp-TwoSum-III"><span class="toc-text">TwoSum II &amp; TwoSum III</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subarray-Sum-Equals-K-amp-TwoSum-Less-Than-K"><span class="toc-text">Subarray Sum Equals K &amp; TwoSum Less Than K</span></a></li></ol>
     </div>
 </div>
 
@@ -370,7 +372,7 @@
             
             
 
-<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80)">
+<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
   <header class="read-next-card-header">
     <small class="read-next-card-header-sitetitle">&mdash; Not Overflow &mdash;</small>
     <h3 class="read-next-card-header-title">Recent Posts</h3>
@@ -382,6 +384,12 @@
   </div>
   <div class="read-next-card-content">
     <ul>
+      
+      
+      
+      <li>
+        <a href="/2019/10/05/two-sum-ii/">TwoSum problem and it's big family (part II)</a>
+      </li>
       
       
       
@@ -402,7 +410,7 @@
             
             
 
-<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80)">
+<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
 	<header class="read-next-card-header tagcloud-card">
 		<h3 class="read-next-card-header-title">Tag Cloud</h3>
 	</header>
