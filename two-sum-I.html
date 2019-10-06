@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="preconnect" href="//www.googletagmanager.com">
+	<link rel="preconnect" href="//zz.bdstatic.com">
+	<link rel="preconnect" href="//sp0.baidu.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preconnect" href="//cdn1.lncld.net">
+	<link rel="preconnect" href="//unpkg.com">
+	<link rel="preconnect" href="//app-router.leancloud.cn">
+	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
+	<link rel="preconnect" href="//gravatar.loli.net">
+
+	<title>TwoSum problem and it's big family (part I) | Not Overflow</title>
+
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+	<meta name="generator" content="hexo">
+	<meta name="author" content="Xiaoxu">
+	<meta name="description" content="Leetcode TwoSum solutions">
+
+	
+	<meta name="keywords" content="leetcode, twosum, data structure, algorithm">
+	
+
+	
+	<link rel="shortcut icon" href="/images/favicon.png">
+	<link rel="apple-touch-icon" href="/images/favicon.png">
+	
+
+	
+	<meta name="theme-color" content="#3c484e">
+	<meta name="msapplication-TileColor" content="#3c484e">
+	
+
+	
+
+	
+
+	<meta property="og:site_name" content="Not Overflow">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="TwoSum problem and it's big family (part I) | Not Overflow">
+	<meta property="og:description" content="Leetcode TwoSum solutions">
+	<meta property="og:url" content="https://notoverflow.com/two-sum-I.html">
+
+	
+	<meta property="article:published_time" content="2019-10-01T00:10:00+08:00"> 
+	<meta property="article:author" content="Xiaoxu">
+	<meta property="article:published_first" content="Not Overflow, /two-sum-I.html">
+	
+
+	
+	
+	<link rel="stylesheet" href="/css/allinonecss.min.css">
+
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149262569-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-149262569-1');
+	</script>
+	
+	
+	
+</head>
+<body class="post-template">
+	<div class="site-wrapper">
+		
+
+
+
+
+<header class="site-header post-site-header outer">
+    <div class="inner">
+        
+<nav class="site-nav"> 
+    <div class="site-nav-left">
+        <ul class="nav">
+            <li>
+                
+                <a href="/" title="Home">HOME</a>
+                
+            </li>
+            
+            
+            <li>
+                <a href="/overview" title="OVERVIEW">OVERVIEW</a>
+            </li>
+            
+            
+        </ul> 
+    </div>
+    
+    <div class="search-button-area">
+        <a href="#search" class="search-button">Search ...</a>
+    </div>
+     
+    <div class="site-nav-right">
+        
+        <a href="#search" class="search-button">Search ...</a>
+         
+        
+<div class="social-links">
+    
+    
+    
+    
+    
+    
+    
+</div>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<div id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+        <header class="post-full-header">
+            <div class="post-full-meta">
+                <time class="post-full-meta-date" datetime="2019-09-30T22:00:00.000Z">
+                    2019-10-1
+                </time>
+                
+                <span class="date-divider">/</span>
+                
+                
+            </div>
+            <h1 class="post-full-title">TwoSum problem and it's big family (part I)</h1>
+        </header>
+        <div class="post-full no-image">
+            
+            <div class="post-full-content">
+                <article id="photoswipe" class="markdown-body">
+                    <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">TwoSum problem</a> is one of the most classic problems on Leetcode. You can find many blogs online explaining this problem. But in this blog (and the next blog), I will focus on not only solving this single problem, but also it’s “family members” surrounding it. </p>
+<p>The following graph is the “family tree” of TwoSum problem. They are connected because they have <strong>Similar Questions</strong> relation on Leetcode. In this blog, I’m going to explain the problems which have close relations to TwoSum problem.  The rest will be explained in the next blog.</p>
+<img style="float: right;" width="400" height="400" class="post-img b-lazy" data-img="/images/two_sum_family_watermark.png" data-index="0" data-src="/images/two_sum_family_watermark.png">
+
+<p>Leetcode problems that will be discussed today:</p>
+<ul>
+<li><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">1. Two Sum (Easy)</a></li>
+<li><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">15. 3Sum (Medium)</a></li>
+<li><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">18. 4Sum (Medium)</a></li>
+<li><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input array is sorted (Easy)</a></li>
+<li><a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/" target="_blank" rel="noopener">170. Two Sum III - Data structure design (Easy)</a></li>
+<li><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">560. Subarray Sum Equals K (Medium)</a></li>
+<li><a href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/" target="_blank" rel="noopener">653. Two Sum IV - Input is a BST (Easy)</a></li>
+<li><a href="https://leetcode.com/problems/two-sum-less-than-k/" target="_blank" rel="noopener">1099. Two Sum Less Than K (Easy)</a></li>
+</ul>
+<h2 id="TwoSum"><a href="#TwoSum" class="headerlink" title="TwoSum"></a>TwoSum</h2><p>Let’s first look at the description of TwoSum problem.</p>
+<p><strong>Description:</strong><br>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <strong>same</strong> element twice.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Solution I - Brute force</strong></p>
+<p>For the brute force solution, we need two levels of loop. In the first level, index <code>i</code> starts from 0 to the end of the array. In the second level, index <code>j</code> starts from <code>i+1</code> to the end of the array. As each input would have exactly one solution, whenever <code>nums[i] + nums[j] == target</code>, we can return <code>i</code> and <code>j</code>. The time complexity would be O(n^2). </p>
+<p>Here is the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># brute force</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums) - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target:</span><br><span class="line">                <span class="keyword">return</span> [i, j]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Solution II - using hashmap</strong></p>
+<p>The next step is to improve the brute force solution in terms of time complexity. Instead of having two loops, we can have one loop plus a hashmap. The hashmap stores each num’s index and its partner number. Partner number is defined as <code>target - nums[i]</code>. If the current num is the partner number of its previous visited num, we return two indices. Time complexity is O(n). Space complexity is also O(n). </p>
+<p>Here is the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hashmap</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    hashmap = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        <span class="keyword">if</span> nums[i] <span class="keyword">not</span> <span class="keyword">in</span> hashmap:</span><br><span class="line">            hashmap[target - nums[i]] = i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [hashmap[nums[i]], i]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Solution III - using two-pointers</strong></p>
+<p>Two-pointer solution is also a good option here. It’s a bit like binary search. We first sort the nums together with their indices as we need to return the indices not the actual numbers. Then we define two pointers <code>left</code> and <code>right</code> . <code>left</code> starts from the beginning and <code>right</code> starts from the end. In the while loop, we calculate the sum of <code>nums[left]</code> and <code>nums[right]</code> . If the sum is bigger than the target, we do <code>right-=1</code> . If the sum is smaller than the target, we do <code>left+=1</code> . If the sum is equal to the target, we return two indices.</p>
+<p>Here is the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># two pointers</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">	nums = enumerate(nums)</span><br><span class="line">    nums = sorted(nums, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])</span><br><span class="line">    l, r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        <span class="keyword">if</span> nums[l][<span class="number">1</span>]+nums[r][<span class="number">1</span>] == target:</span><br><span class="line">            <span class="keyword">return</span> sorted([nums[l][<span class="number">0</span>], nums[r][<span class="number">0</span>]])</span><br><span class="line">        <span class="keyword">elif</span> nums[l][<span class="number">1</span>]+nums[r][<span class="number">1</span>] &lt; target:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            r -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ThreeSum-amp-FourSum"><a href="#ThreeSum-amp-FourSum" class="headerlink" title="ThreeSum &amp; FourSum"></a>ThreeSum &amp; FourSum</h2><p>TwoSum problem solutions can be easily extended to solve <a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">ThreeSum Problem</a> and <a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">FourSum Problem</a>. I’m only showing the solution for FourSum as it’s already covered ThreeSum.</p>
+<p><strong>Description:</strong><br>Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target. The solution set must not contain duplicate triplets.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 0, 1, 2, -1, -4], and target = 0.</span><br><span class="line">A solution set is: [[-1, 0, 1],[-1, -1, 2]]</span><br></pre></td></tr></table></figure>
+
+<p>The brute force solution is basically adding more loops and the time complexity is O(n^4). Here, I’m only showing the code of two-pointer solution. </p>
+<p>This problem might have multiple solutions and the solution set must not contain duplicate triplets. So, we must skip numbers which are the same as their neighbours. The diagram below shows how it works inside <code>twoSum</code> function. The <code>target</code> is dynamic based on <code>nums[i]</code> in <code>threeSum</code> method.</p>
+<img width="200" height="200" class="post-img b-lazy" data-img="/images/1_1.png" data-index="1" data-src="/images/1_1.png">
+
+<img width="200" height="200" class="post-img b-lazy" data-img="/images/1_2.png" data-index="2" data-src="/images/1_2.png">
+
+
+<p>Let’s checkout the code!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    nums = sorted(nums)</span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = len(nums) - <span class="number">1</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        tmp = nums[l] + nums[r]</span><br><span class="line">        <span class="keyword">if</span> tmp == target:</span><br><span class="line">            res.append([nums[l], nums[r]])</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[l] == nums[l - <span class="number">1</span>]: <span class="comment"># skip duplicate numbers</span></span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[r] == nums[r + <span class="number">1</span>]: <span class="comment"># skip duplicate numbers</span></span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> tmp &gt; target:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># O(n^2)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">if</span> len(nums) &lt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums) - <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        two_sum = self.twoSum(nums[i + <span class="number">1</span> : len(nums)], target-nums[i])</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> two_sum:</span><br><span class="line">            res.append([nums[i]] + r)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># O(n^3)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fourSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">    res = []</span><br><span class="line">    nums = sorted(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-3</span>):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="comment"># skip duplicate numbers </span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        three_sum = self.threeSum(nums[i+<span class="number">1</span>:len(nums)], target-nums[i])</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> three_sum:</span><br><span class="line">            res.append([nums[i]] + r)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h2 id="TwoSum-II-amp-TwoSum-III"><a href="#TwoSum-II-amp-TwoSum-III" class="headerlink" title="TwoSum II &amp; TwoSum III"></a>TwoSum II &amp; TwoSum III</h2><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">TwoSum II</a> assumes that the list is already sorted. We can just go for the two-pointer solution.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, numbers, target)</span>:</span></span><br><span class="line">    nums = numbers</span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = len(nums) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        tmp = nums[l] + nums[r]</span><br><span class="line">        <span class="keyword">if</span> tmp == target:</span><br><span class="line">            <span class="keyword">return</span> [l+<span class="number">1</span>, r+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">elif</span> tmp &gt; target:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/" target="_blank" rel="noopener">TwoSum III</a> requires to design a class which includes <code>add</code> and <code>find</code> function. <code>add</code> - add the number to an internal data structure. <code>find</code> - find if there exists any pair of numbers which sum is equal to the value. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TwoSum</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.hashmap = &#123;&#125;        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> number <span class="keyword">in</span> self.hashmap:</span><br><span class="line">            self.hashmap[number] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.hashmap[number] = <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> key, val <span class="keyword">in</span> self.hashmap.items():</span><br><span class="line">            <span class="keyword">if</span> value - key <span class="keyword">in</span> self.hashmap: <span class="comment"># check if the "partner" is already in the hashmap</span></span><br><span class="line">                <span class="keyword">if</span> value - key != key <span class="keyword">or</span> self.hashmap[key] &gt; <span class="number">1</span>: <span class="comment"># avoid value=4, nums=[2]</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/" target="_blank" rel="noopener">Two Sum IV</a> puts numbers in a Binary Search Tree (BST). An important characteristic of BST is that if we do inorder traversal, we will get a sorted list. Two-pointer is a good option here.  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorder</span><span class="params">(self, root, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> root:</span><br><span class="line">            self.inorder(root.left, res)</span><br><span class="line">            res.append(root.val)</span><br><span class="line">            self.inorder(root.right, res)      </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findTarget</span><span class="params">(self, root, k)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        self.inorder(root, res)</span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(res) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            sum = res[l] + res[r]</span><br><span class="line">            <span class="keyword">if</span> sum == k:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">elif</span> sum &gt; k:</span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Subarray-Sum-Equals-K-amp-TwoSum-Less-Than-K"><a href="#Subarray-Sum-Equals-K-amp-TwoSum-Less-Than-K" class="headerlink" title="Subarray Sum Equals K &amp; TwoSum Less Than K"></a>Subarray Sum Equals K &amp; TwoSum Less Than K</h2><p><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">Subarray Sum Equals K</a> has an arry of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:nums = [1,1,1], k = 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+
+<p>Brute force solution considers every possible subarry of the given array. Whenenver the sum equals k, we can increment the result by 1. Time complexity would be O(n^3). </p>
+<p>Another solution is to use cumulative sum. We first get a cumulative sum array <code>summ</code>. The sum between index <code>i</code> and <code>j</code> in <code>nums</code> is calculated by doing <code>summ[j] - summ[i]</code>. Time complexity would be O(n^2). </p>
+<img width="120" height="120" class="post-img b-lazy" data-img="/images/1_3.png" data-index="3" data-src="/images/1_3.png">
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subarraySum</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">    sum = [<span class="literal">None</span> <span class="keyword">for</span> _ <span class="keyword">in</span> nums]</span><br><span class="line">    sum.insert(<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums) + <span class="number">1</span>):</span><br><span class="line">        sum[i] = sum[i - <span class="number">1</span>] + nums[i - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len(nums) + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> sum[j] - sum[i] == k:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p>Another better solution posted on Leetcode is using hashmap. The idea is that when we accumulate the sum, we also check if it’s partner is already in the hashmap (the same concept of TwoSum but in a different scenario). </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subarraySum</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    hashmap = &#123;&#125;</span><br><span class="line">    hashmap[<span class="number">0</span>] = <span class="number">1</span> <span class="comment"># include scenario like nums=[2] k=2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">        sum += nums[i]</span><br><span class="line">        <span class="keyword">if</span> sum - k <span class="keyword">in</span> hashmap:</span><br><span class="line">            res += hashmap[sum-k]</span><br><span class="line">        <span class="keyword">if</span> sum <span class="keyword">in</span> hashmap:</span><br><span class="line">            hashmap[sum] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            hashmap[sum] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode.com/problems/two-sum-less-than-k/" target="_blank" rel="noopener">Two Sum Less Than K</a> gives an array A of integers and integer K, return the maximum S such that there exists <code>i &lt; j</code> with <code>A[i] + A[j] = S</code> and <code>S &lt; K</code>. If no <code>i</code>, <code>j</code> exist satisfying this equation, return -1.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [34,23,1,24,75,33,54,8], K = 60</span><br><span class="line">Output: 58</span><br><span class="line">Explanation: </span><br><span class="line">We can use 34 and 24 to sum 58 which is less than 60.</span><br><span class="line"></span><br><span class="line">Input: A = [10,20,30], K = 15</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: </span><br><span class="line">In this case it&apos;s not possible to get a pair sum less that 15.</span><br></pre></td></tr></table></figure>
+
+<p>It’s an easy variant of TwoSum. We need to find numbers that sum up to a value less than K. Here is the coding using two-pointer solution. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">twoSumLessThanK</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    r = len(A) - <span class="number">1</span></span><br><span class="line">    A = sorted(A)</span><br><span class="line">    res = -float(<span class="string">"inf"</span>)    </span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        sum = A[l] + A[r]</span><br><span class="line">        <span class="keyword">if</span> sum == K <span class="keyword">or</span> sum &gt; K:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res = max(res, sum)</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">if</span> res!=-float(<span class="string">"inf"</span>) <span class="keyword">else</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>If you like this blog, please share it with your peers! Stay tuned on NotOverflow!</strong></p>
+<p><strong>If you have any comments or suggestions or if you need engineers for your project, please drop an email to <a href="mailto:hi.notoverflow@gmail.com" target="_blank" rel="noopener">hi.notoverflow@gmail.com</a>, we can have a chat.</strong></p>
+
+                </article>
+                <ul class="tags-postTags">
+                    
+                    <li>
+                        <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/data-structure/" rel="tag"># data structure</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/two-pointer/" rel="tag"># two-pointer</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/array/" rel="tag"># array</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/hashtable/" rel="tag"># hashtable</a>
+                    </li>
+                    
+                </ul>
+                <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d93b99a278db3e2" async="async"></script>
+</div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="TwoSum problem and it's big family (part II)" href="/two-sum-ii.html">
+            ← TwoSum problem and it's big family (part II)
+        </a>
+        
+        <span class="prev-next-post">·</span>
+        
+    </nav>
+
+    
+    <div class="inner">
+        <div id="comment"></div>
+    </div>
+    
+</div>
+
+<div class="toc-bar">
+    <div class="toc-btn-bar">
+        <a href="#site-main" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M793.024 710.272a32 32 0 1 0 45.952-44.544l-310.304-320a32 32 0 0 0-46.4 0.48l-297.696 320a32 32 0 0 0 46.848 43.584l274.752-295.328 286.848 295.808z"/></svg>
+        </a>
+        <div class="toc-btn toc-switch">
+            <svg class="toc-open" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M779.776 480h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M779.776 672h-387.2a32 32 0 0 0 0 64h387.2a32 32 0 0 0 0-64M256 288a32 32 0 1 0 0 64 32 32 0 0 0 0-64M392.576 352h387.2a32 32 0 0 0 0-64h-387.2a32 32 0 0 0 0 64M256 480a32 32 0 1 0 0 64 32 32 0 0 0 0-64M256 672a32 32 0 1 0 0 64 32 32 0 0 0 0-64"/></svg>
+            <svg class="toc-close hide" viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"/><path d="M557.05545 513.376159l138.367639-136.864185c12.576374-12.416396 12.672705-32.671738 0.25631-45.248112s-32.704421-12.672705-45.248112-0.25631l-138.560301 137.024163-136.447897-136.864185c-12.512727-12.512727-32.735385-12.576374-45.248112-0.063647-12.512727 12.480043-12.54369 32.735385-0.063647 45.248112l136.255235 136.671523-137.376804 135.904314c-12.576374 12.447359-12.672705 32.671738-0.25631 45.248112 6.271845 6.335493 14.496116 9.504099 22.751351 9.504099 8.12794 0 16.25588-3.103239 22.496761-9.247789l137.567746-136.064292 138.687596 139.136568c6.240882 6.271845 14.432469 9.407768 22.65674 9.407768 8.191587 0 16.352211-3.135923 22.591372-9.34412 12.512727-12.480043 12.54369-32.704421 0.063647-45.248112L557.05545 513.376159z"/></svg>
+        </div>
+        <a href="#gobottom" class="toc-btn">
+            <svg viewbox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M231.424 346.208a32 32 0 0 0-46.848 43.584l297.696 320a32 32 0 0 0 46.4 0.48l310.304-320a32 32 0 1 0-45.952-44.544l-286.848 295.808-274.752-295.36z"/></svg>
+        </a>
+    </div>
+    <div class="toc-main">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum"><span class="toc-text">TwoSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreeSum-amp-FourSum"><span class="toc-text">ThreeSum &amp; FourSum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TwoSum-II-amp-TwoSum-III"><span class="toc-text">TwoSum II &amp; TwoSum III</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subarray-Sum-Equals-K-amp-TwoSum-Less-Than-K"><span class="toc-text">Subarray Sum Equals K &amp; TwoSum Less Than K</span></a></li></ol>
+    </div>
+</div>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+	</div>
+	
+
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
+  <header class="read-next-card-header">
+    <small class="read-next-card-header-sitetitle">&mdash; Not Overflow &mdash;</small>
+    <h3 class="read-next-card-header-title">Recent Posts</h3>
+  </header>
+  <div class="read-next-divider">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
+    </svg>
+  </div>
+  <div class="read-next-card-content">
+    <ul>
+      
+      
+      
+      <li>
+        <a href="/two-sum-ii.html">TwoSum problem and it's big family (part II)</a>
+      </li>
+      
+      
+      
+      <li>
+        <a href="/two-sum-I.html">TwoSum problem and it's big family (part I)</a>
+      </li>
+      
+      
+    </ul>
+  </div>
+  <footer class="read-next-card-footer">
+    <a href="/archives">  MORE  → </a>
+  </footer>
+</article>
+
+            
+            
+            
+            
+
+<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
+	<header class="read-next-card-header tagcloud-card">
+		<h3 class="read-next-card-header-title">Tag Cloud</h3>
+	</header>
+	<div class="read-next-card-content-ext">
+		<a href="/tags/array/" style="font-size: 14px;">array</a> <a href="/tags/data-structure/" style="font-size: 14px;">data structure</a> <a href="/tags/hashtable/" style="font-size: 14px;">hashtable</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/two-pointer/" style="font-size: 14px;">two-pointer</a>
+	</div>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+	
+
+
+
+
+<div id="search" class="search-overlay">
+    <div class="search-form">
+        
+        <div class="search-overlay-logo">
+        	<img src="/images/favicon.png" alt="Not Overflow">
+        </div>
+        
+        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
+        <a class="search-overlay-close" href="#"></a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+<footer class="site-footer outer">
+	<div class="site-footer-content inner">
+		<div class="copyright">
+			<a href="/" title="Not Overflow">Not Overflow &copy; 2019</a>
+			
+				
+			        <span hidden="true" id="/two-sum-I.html" class="leancloud-visitors" data-flag-title="TwoSum problem and it's big family (part I)">
+			            <span>阅读量 </span>
+			            <span class="leancloud-visitors-count">0</span>
+			        </span>
+	    		
+    		
+		</div>
+		<nav class="site-footer-nav">
+			
+			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
+		</nav>
+	</div>
+</footer>
+	
+
+
+<script>
+    if(window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister()
+            }
+        })
+    }
+</script>
+
+
+<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        var bLazy = new Blazy()
+    })
+</script>
+
+
+
+
+<div class="floating-header">
+	<div class="floating-header-logo">
+        <a href="/" title="Not Overflow">
+			
+                <img src="/images/favicon.png" alt="Not Overflow icon">
+			
+            <span>Not Overflow</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">TwoSum problem and it's big family (part I)</div>
+    <progress class="progress" value="0">
+        <span class="progress-container">
+            <span class="progress-bar"></span>
+        </span>
+    </progress>
+</div>
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function () {
+        postProgressBar()
+    })
+</script>
+
+
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+
+
+<script id="valineScript" src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+<script>
+    document.getElementById('valineScript').addEventListener("load", function() {
+        new Valine({
+            el: '#comment' ,
+            verify: false,
+            notify: false,
+            appId: '',
+            appKey: '',
+            placeholder: 'Just go go',
+            pageSize: 10,
+            avatar: 'mm',
+            visitor: true
+        })
+    });
+</script>
+
+
+
+
+
+<script>
+    document.getElementById('scriptLoad').addEventListener('load', function(){
+        searchFunc("/")
+    });
+</script>
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    });
+</script>
+
+
+</body>
+</html>
