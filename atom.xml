@@ -5,9 +5,9 @@
   <subtitle>Leetcode Solutions, Data Structure, Productivity</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://highsmallxu.github.io/"/>
+  <link href="https://notoverflow.com/"/>
   <updated>2019-10-06T14:10:46.306Z</updated>
-  <id>https://highsmallxu.github.io/</id>
+  <id>https://notoverflow.com/</id>
   
   <author>
     <name>Xiaoxu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>TwoSum problem and it&#39;s big family (part II)</title>
-    <link href="https://highsmallxu.github.io/2019/10/05/two-sum-ii/"/>
-    <id>https://highsmallxu.github.io/2019/10/05/two-sum-ii/</id>
+    <link href="https://notoverflow.com/2019/10/05/two-sum-ii/"/>
+    <id>https://notoverflow.com/2019/10/05/two-sum-ii/</id>
     <published>2019-10-04T22:00:00.000Z</published>
     <updated>2019-10-06T14:10:46.306Z</updated>
     
@@ -36,22 +36,22 @@
     
     
     
-      <category term="leetcode" scheme="https://highsmallxu.github.io/tags/leetcode/"/>
+      <category term="leetcode" scheme="https://notoverflow.com/tags/leetcode/"/>
     
-      <category term="data structure" scheme="https://highsmallxu.github.io/tags/data-structure/"/>
+      <category term="data structure" scheme="https://notoverflow.com/tags/data-structure/"/>
     
-      <category term="two-pointer" scheme="https://highsmallxu.github.io/tags/two-pointer/"/>
+      <category term="two-pointer" scheme="https://notoverflow.com/tags/two-pointer/"/>
     
-      <category term="array" scheme="https://highsmallxu.github.io/tags/array/"/>
+      <category term="array" scheme="https://notoverflow.com/tags/array/"/>
     
-      <category term="hashtable" scheme="https://highsmallxu.github.io/tags/hashtable/"/>
+      <category term="hashtable" scheme="https://notoverflow.com/tags/hashtable/"/>
     
   </entry>
   
   <entry>
     <title>TwoSum problem and it&#39;s big family (part I)</title>
-    <link href="https://highsmallxu.github.io/2019/10/01/two-sum-I/"/>
-    <id>https://highsmallxu.github.io/2019/10/01/two-sum-I/</id>
+    <link href="https://notoverflow.com/2019/10/01/two-sum-I/"/>
+    <id>https://notoverflow.com/2019/10/01/two-sum-I/</id>
     <published>2019-09-30T22:00:00.000Z</published>
     <updated>2019-10-06T13:53:54.462Z</updated>
     
@@ -68,15 +68,15 @@
     
     
     
-      <category term="leetcode" scheme="https://highsmallxu.github.io/tags/leetcode/"/>
+      <category term="leetcode" scheme="https://notoverflow.com/tags/leetcode/"/>
     
-      <category term="data structure" scheme="https://highsmallxu.github.io/tags/data-structure/"/>
+      <category term="data structure" scheme="https://notoverflow.com/tags/data-structure/"/>
     
-      <category term="two-pointer" scheme="https://highsmallxu.github.io/tags/two-pointer/"/>
+      <category term="two-pointer" scheme="https://notoverflow.com/tags/two-pointer/"/>
     
-      <category term="array" scheme="https://highsmallxu.github.io/tags/array/"/>
+      <category term="array" scheme="https://notoverflow.com/tags/array/"/>
     
-      <category term="hashtable" scheme="https://highsmallxu.github.io/tags/hashtable/"/>
+      <category term="hashtable" scheme="https://notoverflow.com/tags/hashtable/"/>
     
   </entry>
   
