@@ -1,313 +1,604 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-
-
+<html  lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="preconnect" href="//www.googletagmanager.com">
-	<link rel="preconnect" href="//zz.bdstatic.com">
-	<link rel="preconnect" href="//sp0.baidu.com">
-	<link rel="preconnect" href="//www.google-analytics.com">
-	<link rel="preconnect" href="//cdn1.lncld.net">
-	<link rel="preconnect" href="//unpkg.com">
-	<link rel="preconnect" href="//app-router.leancloud.cn">
-	<link rel="preconnect" href="//9qpuwspm.api.lncld.net">
-	<link rel="preconnect" href="//gravatar.loli.net">
+    <meta charset="utf-8" />
 
-	<title>Overview | Not Overflow</title>
+<meta name="generator" content="Hexo 3.9.0" />
 
-	<meta name="HandheldFriendly" content="True">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-	<meta name="generator" content="hexo">
-	<meta name="author" content="Xiaoxu">
-	<meta name="description" content="A tech blog sharing knowledge on Leetcode solutions, data structures & algorithms, system design and productivity.">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-	
-	<meta name="keywords" content="blog, leetcode, data structure, algorithm, system design, productivity">
-	
+<title>Overview - Not Overflow</title>
 
-	
-	<link rel="shortcut icon" href="/images/favicon.png">
-	<link rel="apple-touch-icon" href="/images/favicon.png">
-	
 
-	
-	<meta name="theme-color" content="#3c484e">
-	<meta name="msapplication-TileColor" content="#3c484e">
-	
+    <meta name="description" content="ContentTwoSum problem and its big family (part I)TwoSum problem and its big family (part II)">
+<meta name="keywords" content="technical interview, technical interview questions, productivity">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Overview">
+<meta property="og:url" content="https://notoverflow.com/overview/index.html">
+<meta property="og:site_name" content="Not Overflow">
+<meta property="og:description" content="ContentTwoSum problem and its big family (part I)TwoSum problem and its big family (part II)">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://notoverflow.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-09T20:13:12.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Overview">
+<meta name="twitter:description" content="ContentTwoSum problem and its big family (part I)TwoSum problem and its big family (part II)">
+<meta name="twitter:image" content="https://notoverflow.com/images/og_image.png">
 
-	
 
-	
 
-	<meta property="og:site_name" content="Not Overflow">
-	<meta property="og:type" content="blog">
-	<meta property="og:title" content="Overview | Not Overflow">
-	<meta property="og:description" content="A tech blog sharing knowledge on Leetcode solutions, data structures & algorithms, system design and productivity.">
-	<meta property="og:url" content="https://notoverflow.com/overview/index.html">
 
-	
 
-	
-	
-	<link rel="stylesheet" href="/css/allinonecss.min.css">
 
-	
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149262569-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-149262569-1');
-	</script>
-	
-	
-	
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="tag-template">
-	<div class="site-wrapper">
-		
-
-
-
-
-<header class="site-header outer " style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
-    <div class="inner">
-        
-        
-        
-<nav class="site-nav"> 
-    <div class="site-nav-left">
-        <ul class="nav">
-            <li>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Overview" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
                 
-                <a href="/" title="Home">HOME</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-            </li>
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
             
-            
-            <li>
-                <a href="/overview" title="OVERVIEW">OVERVIEW</a>
-            </li>
-            
-            
-        </ul> 
-    </div>
-    
-    <div class="search-button-area">
-        <a href="#search" class="search-button">Search ...</a>
-    </div>
-     
-    <div class="site-nav-right">
-        
-        <a href="#search" class="search-button">Search ...</a>
-         
-        
-<div class="social-links">
-    
-    
-    
-    
-    
-    
-    
-</div>
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
     </div>
 </nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-        <div class="site-header-content">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            <h1 class="site-title">
                 Overview
-            </h1>
-            <h2 class="site-description"></h2>
+            
+        </h1>
+        <div class="content">
+            <h2 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h2><p><a href="/2019/10/01/two-sum-I/">TwoSum problem and its big family (part I)</a><br><a href="/2019/10/05/two-sum-ii/">TwoSum problem and its big family (part II)</a></p>
+
         </div>
         
         
+        
     </div>
-</header>
-
-
-
-<div id="site-main" class="site-main outer" role="main">
-	<div class="inner">
-		<div class="post-feed">
-			<article class="post-card post no-image custom-page">
-				<article class="post-full no-image">
-					<section class="post-full-content page-full-content">
-						<div id="photoswipe" class="markdown-body">
-							<h2 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h2><p><a href="/2019/10/01/two-sum-I/">TwoSum problem and its big family (part I)</a><br><a href="/2019/10/05/two-sum-ii/">TwoSum problem and its big family (part II)</a></p>
-
-						</div>
-					</section>
-				</article>
-			</article>
-		</div>
-	</div>
 </div>
 
 
-	</div>
-	
 
-
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
             
-            
-
-<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
-  <header class="read-next-card-header">
-    <small class="read-next-card-header-sitetitle">&mdash; Not Overflow &mdash;</small>
-    <h3 class="read-next-card-header-title">Recent Posts</h3>
-  </header>
-  <div class="read-next-divider">
-    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
-      <path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/>
-    </svg>
-  </div>
-  <div class="read-next-card-content">
-    <ul>
-      
-      
-      
-      <li>
-        <a href="/two-sum-ii.html">TwoSum problem and its similar Questions (part II)</a>
-      </li>
-      
-      
-      
-      <li>
-        <a href="/two-sum-I.html">TwoSum problem and its similar Questions (part I)</a>
-      </li>
-      
-      
-    </ul>
-  </div>
-  <footer class="read-next-card-footer">
-    <a href="/archives">  MORE  → </a>
-  </footer>
-</article>
-
-            
-            
-            
-            
-
-<article class="read-next-card" style="background-image: url(https://images.unsplash.com/photo-1519309621146-2a47d1f7103a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80)">
-	<header class="read-next-card-header tagcloud-card">
-		<h3 class="read-next-card-header-title">Tag Cloud</h3>
-	</header>
-	<div class="read-next-card-content-ext">
-		<a href="/tags/array/" style="font-size: 14px;">array</a> <a href="/tags/data-structure/" style="font-size: 14px;">data structure</a> <a href="/tags/hashtable/" style="font-size: 14px;">hashtable</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/two-pointer/" style="font-size: 14px;">two-pointer</a>
-	</div>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-	
-
-
-
-
-<div id="search" class="search-overlay">
-    <div class="search-form">
-        
-        <div class="search-overlay-logo">
-        	<img src="/images/favicon.png" alt="Not Overflow">
-        </div>
-        
-        <input id="local-search-input" class="search-input" type="text" name="search" placeholder="Search ...">
-        <a class="search-overlay-close" href="#"></a>
-    </div>
-    <div id="local-search-result"></div>
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
 </div>
 
-<footer class="site-footer outer">
-	<div class="site-footer-content inner">
-		<div class="copyright">
-			<a href="/" title="Not Overflow">Not Overflow &copy; 2019</a>
-			
-		</div>
-		<nav class="site-footer-nav">
-			
-			<a href="https://hexo.io" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-			<a href="https://github.com/xzhih/hexo-theme-casper" title="Casper" target="_blank" rel="noopener">Casper</a>
-		</nav>
-	</div>
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+                
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/favicon.png" alt="Not Overflow">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Not Overflow
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        SMART work pays off
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="/" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/two-sum-ii.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/two_sum_family2_cover.jpg" alt="The most popular coding interview question on Leetcode - TwoSum probelm and MORE II">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-04T22:00:00.000Z">2019-10-05</time></div>
+                    <a href="/two-sum-ii.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">The most popular coding interview question on Leetcode - TwoSum probelm and MORE II</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/two-sum-I.html" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/two_sum_family_cover.jpg" alt="The most popular coding interview question on Leetcode - TwoSum probelm and MORE I">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-30T22:00:00.000Z">2019-10-01</time></div>
+                    <a href="/two-sum-I.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">The most popular coding interview question on Leetcode - TwoSum probelm and MORE I</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/array/">
+                        <span class="tag">array</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/data-structure/">
+                        <span class="tag">data structure</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hashtable/">
+                        <span class="tag">hashtable</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/leetcode/">
+                        <span class="tag">leetcode</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/two-pointer/">
+                        <span class="tag">two-pointer</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Overview" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Not Overflow&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
 </footer>
-	
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
 
 <script>
-    if(window.navigator && navigator.serviceWorker) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for(let registration of registrations) {
-                registration.unregister()
-            }
-        })
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
     }
+};
 </script>
 
 
-<script id="scriptLoad" src="/js/allinone.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
 <script>
-    document.getElementById('scriptLoad').addEventListener('load', function () {
-        var bLazy = new Blazy()
-    })
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    document.getElementById('scriptLoad').addEventListener('load', function(){
-        searchFunc("/")
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
     });
 </script>
 
 
-
-
-
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
 <script>
-    document.addEventListener('DOMContentLoaded',function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
         }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
     });
+});
 </script>
 
+    
+    
 
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
