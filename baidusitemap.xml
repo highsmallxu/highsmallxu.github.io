@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://notoverflow.com/intro.html</loc>
-    <lastmod>2019-10-27</lastmod>
+    <lastmod>2019-10-28</lastmod>
+  </url>  <url>
+    <loc>https://notoverflow.com/tree-i.html</loc>
+    <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://notoverflow.com/two-sum-I.html</loc>
-    <lastmod>2019-10-27</lastmod>
+    <lastmod>2019-10-28</lastmod>
   </url>  <url>
     <loc>https://notoverflow.com/two-sum-ii.html</loc>
     <lastmod>2019-10-27</lastmod>
