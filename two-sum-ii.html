@@ -22,7 +22,7 @@
 <meta property="og:description" content="The solutions of the most popular coding interview question on Leetcode">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://notoverflow.com/images/two_sum_family2_cover.jpg">
-<meta property="og:updated_time" content="2019-10-27T17:20:21.621Z">
+<meta property="og:updated_time" content="2019-11-02T08:47:05.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The most popular coding interview question on Leetcode - TwoSum probelm and MORE II">
 <meta name="twitter:description" content="The solutions of the most popular coding interview question on Leetcode">
@@ -170,7 +170,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1736 words)
+                    12 minutes read (About 1730 words)
                 </span>
                 
                 
@@ -285,7 +285,7 @@
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fourSumCount</span><span class="hljs-params">(self, A, B, C, D)</span>:</span></span><br><span class="line">    hashmap = &#123;&#125;</span><br><span class="line">    res = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(A)):</span><br><span class="line">        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(len(B)):</span><br><span class="line">            s = A[i] + B[j]</span><br><span class="line">            <span class="hljs-keyword">if</span> s <span class="hljs-keyword">in</span> hashmap:</span><br><span class="line">                hashmap[s] += <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                hashmap[s] = <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(C)):</span><br><span class="line">        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(len(D)):</span><br><span class="line">            s = C[i] + D[j]</span><br><span class="line">            <span class="hljs-keyword">if</span> -s <span class="hljs-keyword">in</span> hashmap:</span><br><span class="line">                res += hashmap[-s]</span><br><span class="line">    <span class="hljs-keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
 <p><strong>If you like this article, please share it with your peers! Stay tuned on Not Overflow!</strong></p>
-<p><strong>If you have any comments or suggestions or if you need engineers for your project, please drop an email to <a href="mailto:hi.notoverflow@gmail.com" target="_blank" rel="noopener">hi.notoverflow@gmail.com</a>, we can have a chat.</strong></p>
+<p><strong>If you have any question/feedback or would like to join in our team, please drop an email to <a href="mailto:hi.notoverflow@gmail.com" target="_blank" rel="noopener">hi.notoverflow@gmail.com</a>.</strong></p>
 
         </div>
         
