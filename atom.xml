@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://notoverflow.com/"/>
-  <updated>2020-02-29T12:38:32.283Z</updated>
+  <updated>2020-02-29T13:32:54.862Z</updated>
   <id>https://notoverflow.com/</id>
   
   <author>
@@ -17,23 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Not Overflow - SMART work pays off</title>
+    <title>Study note - Designing Data-Intensive Applications Chaprter I</title>
     <link href="https://notoverflow.com/intro.html"/>
     <id>https://notoverflow.com/intro.html</id>
-    <published>2099-09-30T22:00:00.000Z</published>
-    <updated>2020-02-29T12:38:32.283Z</updated>
+    <published>2020-02-28T23:00:00.000Z</published>
+    <updated>2020-02-29T13:32:54.862Z</updated>
     
-    <content type="html"><![CDATA[<p>In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (This doesn’t include coding time since it differs from person to person) by finding patterns and understanding the core knowledge. We will also provide information on system design interview preparation and some techniques to be more productive during the preparation. This is important since we all have limited time!</p><p>Check out <a href="/archives/">Archives</a> to see all the articles. </p><p>If you have any question/feedback or would like to join in our team, please drop an email to <a href="mailto:hi.notoverflow@gmail.com" target="_blank" rel="noopener">hi.notoverflow@gmail.com</a>.</p>]]></content>
+    <content type="html"><![CDATA[<p>This is the first study note of book <strong>Designing Data-Intensive Applications</strong>. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data via network. It disusses different design principles of data systems and trade-offs, and various technologies that make the design happen. </p><h3 id="Chapter-1-Reliable-Scalable-and-Maintainable-Applications"><a href="#Chapter-1-Reliable-Scalable-and-Maintainable-Applications" class="headerlink" title="Chapter 1 Reliable, Scalable, and Maintainable Applications"></a>Chapter 1 Reliable, Scalable, and Maintainable Applications</h3><p>A data-intensive application usually has common functionality:</p><ol><li>Store data persistently and the data is available to the other applications (database)</li><li>Keep the results of expensive operations in memory to speed up reads (cache)</li><li>Allow users to do quick search. (search indexes)</li><li>Process data in real-time, and handle data asynchronously (streaming process)</li><li>Periodically process a large chunk of data (batch processing)</li></ol><p>Nowadays, applications have such demanding requirements that a single tool can’t meet all of the data processing and storing needs. So a real data system typically consists of various components. The book shows an example:</p><!-- <img src="/images/ch1-1.png" width="400" height="400"> --><p>During the design phase, there are a lot of tricky questions coming up:</p><ol><li>How do you ensure that the data remains correct and complete, even when things go wrong internally?</li><li>How do you provide consistently good performance to clients, even when parts of your system are degraded?</li><li>How do you scale to handle an increase in load?</li></ol><p>In general, these questions are closely connected to three core concepts of a data-intensive application, which are:</p><ol><li>Reliability</li><li>Scalability</li><li>Maintainability</li></ol><h3 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h3><p>A reliable system should continue to work correctly even there are hardware, software and human errors.</p><p>To what extend do we mean by “work correctly”? There are some typical expectations:</p><ul><li>The application performs the function that the user expects.</li><li>The application tolerates user mistakes and unexpected behaviors.</li><li>Its performance is good enough for basic requirements under expected load and data volume.</li><li>It prevents unauthorized access and abuse.  </li></ul><p>The book talks about an interesting point which is <em>Fault vs Failure</em>. A <em>fault</em> is usually defined as one component deviates from its specification, whereas a <em>failure</em> is when the system as a whole stops providing the required service to users. It is nearly impossible to reduce the chance of having a fault to zero, but what we can do is to</p><blockquote><p>Design a fault-tolerance system that prevents faults from causing failures. </p></blockquote><h3 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h3><p>A scalable system should be able to handle the increase in data volume, traffic volume or complexity. </p><h3 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h3><p>A maintainable system should be easy for engineers and operators to continuously work on it. </p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (
+        &lt;p&gt;This is the first study note of book &lt;strong&gt;Designing Data-Intensive Applications&lt;/strong&gt;. This book is recommended to anyone who devel
       
     
     </summary>
     
+    
+      <category term="Study Note" scheme="https://notoverflow.com/categories/Study-Note/"/>
     
     
   </entry>

@@ -10,14 +10,14 @@
 <meta  />
 <meta  />
 <meta  />
-<title>Not Overflow</title>
+<title>Archives: 2020 - Not Overflow</title>
 
 
     <meta name="description" content="We help you to prepare technical interviews in a more effective way.">
 <meta name="keywords" content="technical interview, technical interview questions, productivity">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Not Overflow">
-<meta property="og:url" content="https://notoverflow.com/index.html">
+<meta property="og:url" content="https://notoverflow.com/archives/2020/index.html">
 <meta property="og:site_name" content="Not Overflow">
 <meta property="og:description" content="We help you to prepare technical interviews in a more effective way.">
 <meta property="og:locale" content="en">
@@ -114,7 +114,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/">Home</a>
                 
                 <a class="navbar-item"
@@ -148,86 +148,36 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-    <div class="card">
-    
-    <div class="card-content article ">
+
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="tag is-link">
+        2020
+        </h3>
+        <div class="timeline">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-28T23:00:00.000Z">2020-02-29</time>
+            <article class="media">
                 
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Study-Note/">Study Note</a>
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-02-28T23:00:00.000Z">2020-02-29</time>
+                        <a href="/intro.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Study note - Designing Data-Intensive Applications Chaprter I</a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                                <div class="level-item is-size-7 is-uppercase">
+                                <a class="has-link-grey -link" href="/categories/Study-Note/">Study Note</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 410 words)
-                </span>
-                
-                
-            </div>
+            </article>
+        
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/intro.html">Study note - Designing Data-Intensive Applications Chaprter I</a>
-            
-        </h1>
-        <div class="content">
-            <p>This is the first study note of book <strong>Designing Data-Intensive Applications</strong>. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data via network. It disusses different design principles of data systems and trade-offs, and various technologies that make the design happen. </p>
-<h3 id="Chapter-1-Reliable-Scalable-and-Maintainable-Applications"><a href="#Chapter-1-Reliable-Scalable-and-Maintainable-Applications" class="headerlink" title="Chapter 1 Reliable, Scalable, and Maintainable Applications"></a>Chapter 1 Reliable, Scalable, and Maintainable Applications</h3><p>A data-intensive application usually has common functionality:</p>
-<ol>
-<li>Store data persistently and the data is available to the other applications (database)</li>
-<li>Keep the results of expensive operations in memory to speed up reads (cache)</li>
-<li>Allow users to do quick search. (search indexes)</li>
-<li>Process data in real-time, and handle data asynchronously (streaming process)</li>
-<li>Periodically process a large chunk of data (batch processing)</li>
-</ol>
-<p>Nowadays, applications have such demanding requirements that a single tool can’t meet all of the data processing and storing needs. So a real data system typically consists of various components. The book shows an example:</p>
-<!-- <img src="/images/ch1-1.png" width="400" height="400"> -->
-
-<p>During the design phase, there are a lot of tricky questions coming up:</p>
-<ol>
-<li>How do you ensure that the data remains correct and complete, even when things go wrong internally?</li>
-<li>How do you provide consistently good performance to clients, even when parts of your system are degraded?</li>
-<li>How do you scale to handle an increase in load?</li>
-</ol>
-<p>In general, these questions are closely connected to three core concepts of a data-intensive application, which are:</p>
-<ol>
-<li>Reliability</li>
-<li>Scalability</li>
-<li>Maintainability</li>
-</ol>
-<h3 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h3><p>A reliable system should continue to work correctly even there are hardware, software and human errors.</p>
-<p>To what extend do we mean by “work correctly”? There are some typical expectations:</p>
-<ul>
-<li>The application performs the function that the user expects.</li>
-<li>The application tolerates user mistakes and unexpected behaviors.</li>
-<li>Its performance is good enough for basic requirements under expected load and data volume.</li>
-<li>It prevents unauthorized access and abuse.  </li>
-</ul>
-<p>The book talks about an interesting point which is <em>Fault vs Failure</em>. A <em>fault</em> is usually defined as one component deviates from its specification, whereas a <em>failure</em> is when the system as a whole stops providing the required service to users. It is nearly impossible to reduce the chance of having a fault to zero, but what we can do is to</p>
-<blockquote>
-<p>Design a fault-tolerance system that prevents faults from causing failures. </p>
-</blockquote>
-<h3 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h3><p>A scalable system should be able to handle the increase in data volume, traffic volume or complexity. </p>
-<h3 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h3><p>A maintainable system should be easy for engineers and operators to continuously work on it. </p>
-
-        </div>
-        
-        
-        
     </div>
 </div>
-
-
-
-
-
-
 
 
 </div>

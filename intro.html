@@ -10,29 +10,29 @@
 <meta  />
 <meta  />
 <meta  />
-<title>Not Overflow - SMART work pays off - Not Overflow</title>
+<title>Study note - Designing Data-Intensive Applications Chaprter I - Not Overflow</title>
 
 
-    <meta name="description" content="In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (This doesn’t include coding time since it differs from person t">
+    <meta name="description" content="This is the first study note of book Designing Data-Intensive Applications. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data vi">
 <meta name="keywords" content="technical interview, technical interview questions, productivity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Not Overflow - SMART work pays off">
+<meta property="og:title" content="Study note - Designing Data-Intensive Applications Chaprter I">
 <meta property="og:url" content="https://notoverflow.com/intro.html">
 <meta property="og:site_name" content="Not Overflow">
-<meta property="og:description" content="In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (This doesn’t include coding time since it differs from person t">
+<meta property="og:description" content="This is the first study note of book Designing Data-Intensive Applications. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data vi">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://notoverflow.com/images/og_image.png">
-<meta property="og:updated_time" content="2020-02-29T12:38:32.283Z">
+<meta property="og:updated_time" content="2020-02-29T13:32:54.862Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Not Overflow - SMART work pays off">
-<meta name="twitter:description" content="In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (This doesn’t include coding time since it differs from person t">
+<meta name="twitter:title" content="Study note - Designing Data-Intensive Applications Chaprter I">
+<meta name="twitter:description" content="This is the first study note of book Designing Data-Intensive Applications. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data vi">
 <meta name="twitter:image" content="https://notoverflow.com/images/og_image.png">
 
 
 
 
 
-<link rel="alternative" href="atom.xml" title="Not Overflow - SMART work pays off" type="application/atom+xml">
+<link rel="alternative" href="atom.xml" title="Study note - Designing Data-Intensive Applications Chaprter I" type="application/atom+xml">
 
 
 
@@ -107,7 +107,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/favicon.png" alt="Not Overflow - SMART work pays off" height="28">
+                <img src="/images/favicon.png" alt="Study note - Designing Data-Intensive Applications Chaprter I" height="28">
             
             </a>
         </div>
@@ -154,13 +154,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2099-09-30T22:00:00.000Z">2099-10-01</time>
+                <time class="level-item has-text-grey" datetime="2020-02-28T23:00:00.000Z">2020-02-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Study-Note/">Study Note</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 105 words)
+                    3 minutes read (About 410 words)
                 </span>
                 
                 
@@ -169,13 +173,48 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Not Overflow - SMART work pays off
+                Study note - Designing Data-Intensive Applications Chaprter I
             
         </h1>
         <div class="content">
-            <p>In Not Overflow, we love discovering patterns. We will tell you how to come up with solutions for 10 problems on Leetcode in 20 minutes (This doesn’t include coding time since it differs from person to person) by finding patterns and understanding the core knowledge. We will also provide information on system design interview preparation and some techniques to be more productive during the preparation. This is important since we all have limited time!</p>
-<p>Check out <a href="/archives/">Archives</a> to see all the articles. </p>
-<p>If you have any question/feedback or would like to join in our team, please drop an email to <a href="mailto:hi.notoverflow@gmail.com" target="_blank" rel="noopener">hi.notoverflow@gmail.com</a>.</p>
+            <p>This is the first study note of book <strong>Designing Data-Intensive Applications</strong>. This book is recommended to anyone who develop applications that need some kind of backend for storing or processing data via network. It disusses different design principles of data systems and trade-offs, and various technologies that make the design happen. </p>
+<h3 id="Chapter-1-Reliable-Scalable-and-Maintainable-Applications"><a href="#Chapter-1-Reliable-Scalable-and-Maintainable-Applications" class="headerlink" title="Chapter 1 Reliable, Scalable, and Maintainable Applications"></a>Chapter 1 Reliable, Scalable, and Maintainable Applications</h3><p>A data-intensive application usually has common functionality:</p>
+<ol>
+<li>Store data persistently and the data is available to the other applications (database)</li>
+<li>Keep the results of expensive operations in memory to speed up reads (cache)</li>
+<li>Allow users to do quick search. (search indexes)</li>
+<li>Process data in real-time, and handle data asynchronously (streaming process)</li>
+<li>Periodically process a large chunk of data (batch processing)</li>
+</ol>
+<p>Nowadays, applications have such demanding requirements that a single tool can’t meet all of the data processing and storing needs. So a real data system typically consists of various components. The book shows an example:</p>
+<!-- <img src="/images/ch1-1.png" width="400" height="400"> -->
+
+<p>During the design phase, there are a lot of tricky questions coming up:</p>
+<ol>
+<li>How do you ensure that the data remains correct and complete, even when things go wrong internally?</li>
+<li>How do you provide consistently good performance to clients, even when parts of your system are degraded?</li>
+<li>How do you scale to handle an increase in load?</li>
+</ol>
+<p>In general, these questions are closely connected to three core concepts of a data-intensive application, which are:</p>
+<ol>
+<li>Reliability</li>
+<li>Scalability</li>
+<li>Maintainability</li>
+</ol>
+<h3 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h3><p>A reliable system should continue to work correctly even there are hardware, software and human errors.</p>
+<p>To what extend do we mean by “work correctly”? There are some typical expectations:</p>
+<ul>
+<li>The application performs the function that the user expects.</li>
+<li>The application tolerates user mistakes and unexpected behaviors.</li>
+<li>Its performance is good enough for basic requirements under expected load and data volume.</li>
+<li>It prevents unauthorized access and abuse.  </li>
+</ul>
+<p>The book talks about an interesting point which is <em>Fault vs Failure</em>. A <em>fault</em> is usually defined as one component deviates from its specification, whereas a <em>failure</em> is when the system as a whole stops providing the required service to users. It is nearly impossible to reduce the chance of having a fault to zero, but what we can do is to</p>
+<blockquote>
+<p>Design a fault-tolerance system that prevents faults from causing failures. </p>
+</blockquote>
+<h3 id="Scalability"><a href="#Scalability" class="headerlink" title="Scalability"></a>Scalability</h3><p>A scalable system should be able to handle the increase in data volume, traffic volume or complexity. </p>
+<h3 id="Maintainability"><a href="#Maintainability" class="headerlink" title="Maintainability"></a>Maintainability</h3><p>A maintainable system should be easy for engineers and operators to continuously work on it. </p>
 
         </div>
         
@@ -308,10 +347,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Category
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -363,7 +402,15 @@
                 Categories
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/Study-Note/">
+            <span class="level-start">
+                <span class="level-item">Study Note</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -380,16 +427,16 @@
             
             <a href="/intro.html" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Not Overflow - SMART work pays off">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Study note - Designing Data-Intensive Applications Chaprter I">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2099-09-30T22:00:00.000Z">2099-10-01</time></div>
-                    <a href="/intro.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Not Overflow - SMART work pays off</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-28T23:00:00.000Z">2020-02-29</time></div>
+                    <a href="/intro.html" class="title has-link-black-ter is-size-6 has-text-weight-normal">Study note - Designing Data-Intensive Applications Chaprter I</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Study-Note/">Study Note</a>
                     </p>
                 </div>
             </div>
@@ -424,7 +471,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/favicon.png" alt="Not Overflow - SMART work pays off" height="28">
+                    <img src="/images/favicon.png" alt="Study note - Designing Data-Intensive Applications Chaprter I" height="28">
                 
                 </a>
                 <p class="is-size-7">
